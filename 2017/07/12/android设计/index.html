@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Material Design设计 | Liup</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="android,Material">
+    
+    <meta name="description" content="小屏幕优先   小屏幕优先，虽然大屏幕会有大部分留白，但是不影响使用，可是如果大屏幕优先，小屏幕就可能无法使用。     密度桶 ，以下是四种常用密度     drawable-nodpi文件夹-放入的是不会根据密度进行缩放的图片-比如背景图  elevation -设置控件高度     添加FAB按钮  首先讲下边这两行添加到你的build.grade文件中    属性   fabSize -">
+<meta name="keywords" content="android,Material">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Material Design设计">
+<meta property="og:url" content="http://code.liup127.cn/2017/07/12/android设计/index.html">
+<meta property="og:site_name" content="Liup">
+<meta property="og:description" content="小屏幕优先   小屏幕优先，虽然大屏幕会有大部分留白，但是不影响使用，可是如果大屏幕优先，小屏幕就可能无法使用。     密度桶 ，以下是四种常用密度     drawable-nodpi文件夹-放入的是不会根据密度进行缩放的图片-比如背景图  elevation -设置控件高度     添加FAB按钮  首先讲下边这两行添加到你的build.grade文件中    属性   fabSize -">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://photo.xiaxiexiaoshuo.top/dpi-buckets.png">
+<meta property="og:updated_time" content="2019-03-07T06:52:33.243Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Material Design设计">
+<meta name="twitter:description" content="小屏幕优先   小屏幕优先，虽然大屏幕会有大部分留白，但是不影响使用，可是如果大屏幕优先，小屏幕就可能无法使用。     密度桶 ，以下是四种常用密度     drawable-nodpi文件夹-放入的是不会根据密度进行缩放的图片-比如背景图  elevation -设置控件高度     添加FAB按钮  首先讲下边这两行添加到你的build.grade文件中    属性   fabSize -">
+<meta name="twitter:image" content="http://photo.xiaxiexiaoshuo.top/dpi-buckets.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Liup" type="application/atom+xml">
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">有追求的猿</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="https://blog.csdn.net/qq_23089525/article/details/88310018">留言</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-android设计" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Material Design设计
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/07/12/android设计/" class="article-date">
+            <time datetime="2017-07-12T03:19:20.000Z" itemprop="datePublished">2017-07-12</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Material/">Material</a>, <a class="tag-link" href="/tags/android/">android</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <ol>
+<li><p>小屏幕优先</p>
+<ol>
+<li><blockquote>
+<p>小屏幕优先，虽然大屏幕会有大部分留白，但是不影响使用，<br>可是如果大屏幕优先，小屏幕就可能无法使用。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>密度桶 ，以下是四种常用密度</p>
+<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/dpi-buckets.png" width="80%" height="80%"></li>
+</ol>
+</li>
+<li><p>drawable-nodpi文件夹-放入的是不会根据密度进行缩放的图片-比如背景图</p>
+</li>
+<li><p>elevation -设置控件高度</p>
+<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/QQ20170712-171104@2x.png" width="80%" height="80%"></li>
+</ol>
+</li>
+<li><p>添加FAB按钮</p>
+<ol>
+<li>首先讲下边这两行添加到你的build.grade文件中<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/buildgrade.png" width="80%" height="80%"></li>
+</ol>
+</li>
+<li>属性<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/fab.png" width="80%" height="80%"></li>
+<li><blockquote>
+<p>fabSize - FAB的大小</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>elevation - FAB高度</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>pressedTranslationZ - 按下FAB，按钮变大的数值</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>针对老版本项目<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/appcompat.png" width="80%" height="80%"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>CoordinatorLayout 滚动的动态页面<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/coodinglayout.png" width="80%" height="80%"></li>
+<li><blockquote>
+<p>只有添加了 <code>nestedScrollingEnabled=&quot;true&quot;</code> 才能实现工具栏联动</p>
+<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/nestedScrolling.png" width="80%" height="80%"></li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>添加自定义字体</p>
+<ol>
+<li><blockquote>
+<p>将下载的字体放入assets下</p>
+<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/ziti.png" width="80%" height="80%"></li>
+</ol>
+</blockquote>
+</li>
+<li><blockquote>
+<p>在<code>onAttach</code> 方法中实例化字体类型</p>
+<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/onattact.png" width="80%" height="80%"></li>
+</ol>
+</blockquote>
+</li>
+<li><blockquote>
+<p>然后在 <code>onCreate</code> 方法中将字体类型设置给<code>TextView</code></p>
+<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/oncreateview.png" width="80%" height="80%"></li>
+</ol>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>圆形图像的处理方法</p>
+<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/yuanxingtouxiang.png" width="80%" height="80%"></li>
+</ol>
+</li>
+<li><p>固定宽高比图像</p>
+<ol>
+<li>自定义ImageView<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/zidingyiimage.png" width="80%" height="80%"></li>
+</ol>
+</li>
+<li>重写onMeasure方法<ol>
+<li>设置宽高比例</li>
+<li>将设置好的数值传递给超类</li>
+<li><img src="http://photo.xiaxiexiaoshuo.top/onmeasure.png" width="80%" height="80%"></li>
+</ol>
+</li>
+<li>xml中使用，控件高度使用0dp,会根据权重去自动计算控件高度<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/imagexml.png" width="80%" height="80%"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>背景保护 - 文字、图标和背景色一样导致看不到问题</p>
+<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/titlemeile.png" width="80%" height="80%"></li>
+<li>创建一个带透明度的渐变色<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/jianbianse.png" width="80%" height="80%"></li>
+</ol>
+</li>
+<li>用FrameLayout来堆叠视图<ol>
+<li><img src="http://photo.xiaxiexiaoshuo.top/frameduidie.png" width="80%" height="80%"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>动画设置<ol>
+<li>动画时长一般在～300ms</li>
+<li>要根据尺寸和移动距离来确定动画时长</li>
+<li>对于穿过屏幕的动画，可以使用快出慢进的过渡</li>
+<li>动画可指导用户动作</li>
+<li>动画不要重叠，这样会感觉很乱</li>
+<li>AnimatedVectorDrawables   VectorDravable   矢量图动画 4-19（回顾）</li>
+</ol>
+</li>
+<li>自适应<ol>
+<li>文本边缘要比行间距大，行间距要适中。</li>
+<li>单行文本不易过长，不易阅读。</li>
+<li>图片尽量不要裁剪，保持宽高比，保证图片清晰度。</li>
+<li>详细信息少的，尽量用dialog形式展示</li>
+<li>设计时要均衡空间，不要有太多留白。</li>
+<li>整体设计不要参差不齐</li>
+<li>通过layout-w600dp和include来为大尺寸屏幕重新设计排版</li>
+</ol>
+</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://code.liup127.cn/2017/07/12/android设计/" data-id="cjsyb30ho0003lgfyjvnhj0qw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "liup"
+        },
+        "headline": "Material Design设计",
+        "image": "http://code.liup127.cnhttp://photo.xiaxiexiaoshuo.top/dpi-buckets.png",
+        "keywords": "android Material",
+        "genre": "",
+        "datePublished": "2017-07-12",
+        "dateCreated": "2017-07-12",
+        "dateModified": "2019-03-07",
+        "url": "http://code.liup127.cn/2017/07/12/android设计/",
+        "description": "
+小屏幕优先
+
+
+小屏幕优先，虽然大屏幕会有大部分留白，但是不影响使用，可是如果大屏幕优先，小屏幕就可能无法使用。
+
+
+
+
+密度桶 ，以下是四种常用密度
+
+
+
+
+drawable-nodpi文件夹-放入的是不会根据密度进行缩放的图片-比如背景图
+
+elevation -设置控件高度
+
+
+
+
+添加FAB按钮
+
+首先讲下边这两行添加到你的build.grade文件中
+
+
+
+属性
+
+
+fabSize -"
+        "wordCount": 75
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/CrazyLiup" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100022001084052" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="https://goo.gl/photos/AL3cVn29gQxRcEE59" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/crazycodepeng" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="https://weibo.com/liu1854/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/25/各路API/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            各路API
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/07/10/学习索引/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">学习索引</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/25/各路API/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://photo.xiaxiexiaoshuo.top/001163a472184db5991730fdd47b65ab.jpg)" alt="各路API" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/25/各路API/" class="title">各路API</a></p>
+                            <p class="item-date"><time datetime="2017-07-25T00:49:56.000Z" itemprop="datePublished">2017-07-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/12/android设计/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://photo.xiaxiexiaoshuo.top/dpi-buckets.png)" alt="Material Design设计" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/12/android设计/" class="title">Material Design设计</a></p>
+                            <p class="item-date"><time datetime="2017-07-12T03:19:20.000Z" itemprop="datePublished">2017-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/10/学习索引/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://photo.xiaxiexiaoshuo.top/500px227292749.jpg)" alt="学习索引" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/10/学习索引/" class="title">学习索引</a></p>
+                            <p class="item-date"><time datetime="2017-07-10T03:33:40.000Z" itemprop="datePublished">2017-07-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/26/java转Kotlin遇到的问题/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://photo.xiaxiexiaoshuo.top/500px227356397.jpg)" alt="java转Kotlin遇到的问题" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/26/java转Kotlin遇到的问题/" class="title">java转Kotlin遇到的问题</a></p>
+                            <p class="item-date"><time datetime="2017-05-26T08:51:36.000Z" itemprop="datePublished">2017-05-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/17/Adb命令/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/05/17/Adb命令/adbinstall.png)" alt="Adb命令" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/17/Adb命令/" class="title">Adb命令</a></p>
+                            <p class="item-date"><time datetime="2017-05-17T06:21:55.000Z" itemprop="datePublished">2017-05-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Adb/">Adb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android7/">Android7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material/">Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多窗口支持/">多窗口支持</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/索引/">索引</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Adb/" style="font-size: 10px;">Adb</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android7/" style="font-size: 10px;">Android7</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Material/" style="font-size: 10px;">Material</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/动漫/" style="font-size: 10px;">动漫</a> <a href="/tags/多窗口支持/" style="font-size: 10px;">多窗口支持</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/索引/" style="font-size: 10px;">索引</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 liup</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://code.liup127.cn/2017/07/12/android设计/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

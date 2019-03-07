@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Android多窗口支持 | Liup</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Google,Android7,多窗口支持">
+    
+    <meta name="description" content="Android N 添加了对同时显示多个应用窗口的支持。在手持设备上，两个应用可以在“分屏”模式中左右并排或上下并排显示。在电视设备上，应用可以使用“画中画”模式，在用户与另一个应用交互的同时继续播放视频。  如何启动分屏1.第一种方式  按 Overview 按钮进入 Overview 界面，然后长按 activity 拖动到界面的提示区域(我的手机是顶部)。  2.第二种方式  在 act">
+<meta name="keywords" content="Google,Android7,多窗口支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android多窗口支持">
+<meta property="og:url" content="http://code.liup127.cn/2017/05/11/AndroidN分屏/index.html">
+<meta property="og:site_name" content="Liup">
+<meta property="og:description" content="Android N 添加了对同时显示多个应用窗口的支持。在手持设备上，两个应用可以在“分屏”模式中左右并排或上下并排显示。在电视设备上，应用可以使用“画中画”模式，在用户与另一个应用交互的同时继续播放视频。  如何启动分屏1.第一种方式  按 Overview 按钮进入 Overview 界面，然后长按 activity 拖动到界面的提示区域(我的手机是顶部)。  2.第二种方式  在 act">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://photo.xiaxiexiaoshuo.top/IMG_20170522_193956R.jpg">
+<meta property="og:updated_time" content="2019-03-07T07:30:53.169Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android多窗口支持">
+<meta name="twitter:description" content="Android N 添加了对同时显示多个应用窗口的支持。在手持设备上，两个应用可以在“分屏”模式中左右并排或上下并排显示。在电视设备上，应用可以使用“画中画”模式，在用户与另一个应用交互的同时继续播放视频。  如何启动分屏1.第一种方式  按 Overview 按钮进入 Overview 界面，然后长按 activity 拖动到界面的提示区域(我的手机是顶部)。  2.第二种方式  在 act">
+<meta name="twitter:image" content="http://photo.xiaxiexiaoshuo.top/IMG_20170522_193956R.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="Liup" type="application/atom+xml">
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">有追求的猿</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="https://blog.csdn.net/qq_23089525/article/details/88310018">留言</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="multiwindow-AndroidN分屏" class="article article-single article-type-multiwindow" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Android多窗口支持
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/05/11/AndroidN分屏/" class="article-date">
+            <time datetime="2017-05-11T12:15:35.000Z" itemprop="datePublished">2017-05-11</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android7/">Android7</a>, <a class="tag-link" href="/tags/Google/">Google</a>, <a class="tag-link" href="/tags/多窗口支持/">多窗口支持</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="http://photo.xiaxiexiaoshuo.top/IMG_20170522_193956R.jpg" width="70%" height="70%"></p>
+<blockquote>
+<p>Android N 添加了对同时显示多个应用窗口的支持。<br>在手持设备上，两个应用可以在“分屏”模式中左右并排或上下并排显示。<br>在电视设备上，应用可以使用“画中画”模式，在用户与另一个应用交互的同时继续播放视频。</p>
+</blockquote>
+<h2 id="如何启动分屏"><a href="#如何启动分屏" class="headerlink" title="如何启动分屏"></a>如何启动分屏</h2><p>1.<em>第一种方式</em></p>
+<p> 按 Overview 按钮进入 Overview 界面，然后长按 activity 拖动到界面的提示区域(我的手机是顶部)。</p>
+<p><img src="http://photo.xiaxiexiaoshuo.top/fenpingfs.gif" width="40%" height="40%"></p>
+<p>2.<em>第二种方式</em></p>
+<p> 在 activity 界面长按 Overview 按钮，如果 activity 没有禁用分屏模式就可以进入分屏界面了。</p>
+<h2 id="解析官方Demo里的几种启动模式"><a href="#解析官方Demo里的几种启动模式" class="headerlink" title="解析官方Demo里的几种启动模式"></a>解析官方Demo里的几种启动模式</h2><p>1.<em>第一种启动方式-START BASIC，DEFAULT ACTIVITY(默认的启动方式)</em></p>
+<p> 这种启动方式并没有什么特别的，启动的 activity 如果没有设置其他属性，可正常进入分屏模式。</p>
+<p><img src="http://photo.xiaxiexiaoshuo.top/basic.png" width="70%" height="70%"></p>
+<p>2.<em>第二种启动方式-START UNRESIZEABLE ACTIVITY(禁用分屏模式)</em></p>
+<p> 这个模式中在 AndroidManifest 中加入了 <code>android:resizeableActivity=”false”</code> 将禁用分屏，<br> 如果不加这条属性，默认是 true，启用分屏模式。</p>
+<p><img src="http://photo.xiaxiexiaoshuo.top/jyfpcode.png" width="70%" height="70%"></p>
+<p><img src="http://photo.xiaxiexiaoshuo.top/jyfpfest.png" width="70%" height="70%"></p>
+<p> 该模式下如果想启动分屏模式会提示<code>该应用不支持分屏</code></p>
+<p><img src="http://photo.xiaxiexiaoshuo.top/jyfp.png" width="40%" height="40%"></p>
+<p>3.<em>第三种启动方式-START ACTIVITY ADJACENT(共享分屏模式)</em></p>
+<p> 如果处于分屏模式下，被启动 activity 直接占据屏幕另一半。否则这种启动方式并没有什么不同。<br>只需要在启动时加入<code>Intent.FLAG_ACTIVITY_LAUNCH_ADJACENT</code>即可。</p>
+<p> <img src="http://photo.xiaxiexiaoshuo.top/fpcode.png" width="70%" height="70%"><br> <img src="http://photo.xiaxiexiaoshuo.top/fenping.gif" width="40%" height="40%"></p>
+<p>4.<em>第四种启动方式-START ACTIVITY THAT HANDLES CONFIGURATIONCHANGES(加配置信息)</em></p>
+<p> 这种启动方式里在 AndroidManifest 的 configChanges 属性里加入了很多属性。比如禁用横竖屏切换之类的,<br> 如果想仔细了解这些配置可以看<a href=" https://developer.android.com/guide/topics/resources/runtime-changes.html" target="_blank" rel="noopener">官方文档</a>，里面说的很详细，这里就不过多赘述了。</p>
+<p> <img src="http://photo.xiaxiexiaoshuo.top/peizhi.png" width="70%" height="70%"></p>
+<p>5.<em>第五种启动方式-START ACTIVITY WITH MINIMUM SIZE(Root权限下在AndroidManifest的一些属性配置)</em></p>
+<p> 对于 Android N，<layout> 清单元素支持以下几种属性，这些属性影响 Activity 在多窗口模式中的行为：</layout></p>
+<ul>
+<li><p>android:defaultWidth<br>以自由形状模式启动时 Activity 的默认宽度。</p>
+</li>
+<li><p>android:defaultHeight<br>以自由形状模式启动时 Activity 的默认高度。</p>
+</li>
+<li><p>android:gravity<br>以自由形状模式启动时 Activity 的初始位置。请参阅 <a href="https://developer.android.com/reference/android/view/Gravity.html" target="_blank" rel="noopener">Gravity</a> 参考资料，了解合适的值设置。</p>
+</li>
+<li><p>android:minimalHeight、android:minimalWidth<br>分屏和自由形状模式中 Activity 的最小高度和最小宽度。 如果用户在分屏模式中移动分界线，使 Activity 尺寸低于指定的最小值，系统会将 Activity 裁剪为用户请求的尺寸。</p>
+</li>
+</ul>
+<p> 在以下节点显示了如何指定 Activity 在自由形状模式中显示时 Activity 的默认大小、位置和最小尺寸</p>
+<p> <img src="http://photo.xiaxiexiaoshuo.top/rootfp.png" width="70%" height="70%"></p>
+<p>6.<em>第六种启动方式-START ACTIVITY WITH MINIMUM SIZE(Root权限下在代码中的属性配置)</em></p>
+<p> 这个和第五种差不多，就是在代码中设置了</p>
+<p><img src="http://photo.xiaxiexiaoshuo.top/codeset.png" width="70%" height="70%"></p>
+<h1 id="多窗口变更通知和查询"><a href="#多窗口变更通知和查询" class="headerlink" title="多窗口变更通知和查询"></a>多窗口变更通知和查询</h1><p> <a href="https://developer.android.com/reference/android/app/Activity.html" target="_blank" rel="noopener">Activity</a>类中添加了以下新方法，以支持多窗口显示。</p>
+<ol>
+<li><p>Activity.isInMultiWindowMode()<br>调用该方法以确认 Activity 是否处于多窗口模式。</p>
+</li>
+<li><p>Activity.isInPictureInPictureMode()<br>调用该方法以确认 Activity 是否处于画中画模式。</p>
+<ul>
+<li>注：画中画模式是多窗口模式的特例。 如果 myActivity.isInPictureInPictureMode() 返回 true，则 myActivity.isInMultiWindowMode() 也返回 true。</li>
+</ul>
+</li>
+<li><p>Activity.onMultiWindowModeChanged()<br>Activity 进入或退出多窗口模式时系统将调用此方法。 在 Activity 进入多窗口模式时，系统向该方法传递 true 值，在退出多窗口模式时，则传递 false 值。</p>
+</li>
+<li><p>Activity.onPictureInPictureModeChanged()<br>Activity 进入或退出画中画模式时系统将调用此方法。 在 Activity 进入画中画模式时，系统向该方法传递 true 值，在退出画中画模式时，则传递 false 值。</p>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>每个方法还有 Fragment 版本，例如 Fragment.isInMultiWindowMode()。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>关于更多关于Android<a href="https://developer.android.com/guide/topics/ui/multi-window.html" target="_blank" rel="noopener">多窗口支持</a>的信息可点击链接查看</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>最后附上我github稍微翻译了一下的<a href="https://github.com/crazycodepeng/android-multiwindowplayground" target="_blank" rel="noopener">官方demo</a></p>
+</blockquote>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://code.liup127.cn/2017/05/11/AndroidN分屏/" data-id="cjsyb30hl0001lgfyu8b50xs2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "liup"
+        },
+        "headline": "Android多窗口支持",
+        "image": "http://code.liup127.cnhttp://photo.xiaxiexiaoshuo.top/IMG_20170522_193956R.jpg",
+        "keywords": "Google Android7 多窗口支持",
+        "genre": "",
+        "datePublished": "2017-05-11",
+        "dateCreated": "2017-05-11",
+        "dateModified": "2019-03-07",
+        "url": "http://code.liup127.cn/2017/05/11/AndroidN分屏/",
+        "description": "
+
+Android N 添加了对同时显示多个应用窗口的支持。在手持设备上，两个应用可以在“分屏”模式中左右并排或上下并排显示。在电视设备上，应用可以使用“画中画”模式，在用户与另一个应用交互的同时继续播放视频。
+
+如何启动分屏1.第一种方式
+ 按 Overview 按钮进入 Overview 界面，然后长按 activity 拖动到界面的提示区域(我的手机是顶部)。
+
+2.第二种方式
+ 在 act"
+        "wordCount": 178
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/CrazyLiup" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/profile.php?id=100022001084052" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="https://goo.gl/photos/AL3cVn29gQxRcEE59" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/crazycodepeng" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="https://weibo.com/liu1854/profile?rightmod=1&wvr=6&mod=personinfo" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/17/Adb命令/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Adb命令
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/01/19/dong-man/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">动漫收藏</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/25/各路API/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://photo.xiaxiexiaoshuo.top/001163a472184db5991730fdd47b65ab.jpg)" alt="各路API" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/25/各路API/" class="title">各路API</a></p>
+                            <p class="item-date"><time datetime="2017-07-25T00:49:56.000Z" itemprop="datePublished">2017-07-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/12/android设计/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://photo.xiaxiexiaoshuo.top/dpi-buckets.png)" alt="Material Design设计" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/12/android设计/" class="title">Material Design设计</a></p>
+                            <p class="item-date"><time datetime="2017-07-12T03:19:20.000Z" itemprop="datePublished">2017-07-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/10/学习索引/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://photo.xiaxiexiaoshuo.top/500px227292749.jpg)" alt="学习索引" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/10/学习索引/" class="title">学习索引</a></p>
+                            <p class="item-date"><time datetime="2017-07-10T03:33:40.000Z" itemprop="datePublished">2017-07-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/26/java转Kotlin遇到的问题/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://photo.xiaxiexiaoshuo.top/500px227356397.jpg)" alt="java转Kotlin遇到的问题" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/26/java转Kotlin遇到的问题/" class="title">java转Kotlin遇到的问题</a></p>
+                            <p class="item-date"><time datetime="2017-05-26T08:51:36.000Z" itemprop="datePublished">2017-05-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/17/Adb命令/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2017/05/17/Adb命令/adbinstall.png)" alt="Adb命令" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/05/17/Adb命令/" class="title">Adb命令</a></p>
+                            <p class="item-date"><time datetime="2017-05-17T06:21:55.000Z" itemprop="datePublished">2017-05-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Adb/">Adb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android7/">Android7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material/">Material</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/">android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动漫/">动漫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多窗口支持/">多窗口支持</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/索引/">索引</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Adb/" style="font-size: 10px;">Adb</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android7/" style="font-size: 10px;">Android7</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Material/" style="font-size: 10px;">Material</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/动漫/" style="font-size: 10px;">动漫</a> <a href="/tags/多窗口支持/" style="font-size: 10px;">多窗口支持</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/索引/" style="font-size: 10px;">索引</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 liup</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://code.liup127.cn/2017/05/11/AndroidN分屏/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
